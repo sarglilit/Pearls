@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Pearl</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .header {
+            background: #fff;
+            padding: 20px;
+        }
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .category {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .category:hover {
+            transform: scale(1.1);
+        }
+        .category img {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+        }
+        .popular {
+            margin-top: 30px;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .product {
+            margin: 20px;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+        }
+        .product img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .product .name {
+            font-size: 18px;
+            margin-top: 5px;
+        }
+        .product .price {
+            font-size: 16px;
+            color: green;
+            margin-top: 5px;
+        }
+        .product .code {
+            font-size: 14px;
+            color: gray;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function toggleProducts(category) {
+            window.location.href = category + '.html';
+        }
+        function openModal(imgSrc) {
+            let modal = document.getElementById('imageModal');
+            let modalImg = document.getElementById('modalImg');
+            modalImg.src = imgSrc;
+            modal.style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Grand Pearl</div>
+    </div>
+    <div class="categories">
+        <div class="category" onclick="toggleProducts('necklaces')">
+            <img src="necklace.jpg" alt="Վզնոցներ">
+            <div>Վզնոցներ</div>
+        </div>
+        <div class="category" onclick="toggleProducts('earrings')">
+            <img src="earrings.jpg" alt="Օղեր">
+            <div>Օղեր</div>
+        </div>
+        <div class="category" onclick="toggleProducts('rings')">
+            <img src="rings.jpg" alt="Մատանիներ">
+            <div>Մատանիներ</div>
+        </div>
+        <div class="category" onclick="toggleProducts('sets')">
+            <img src="sets.jpg" alt="Հավաքածուներ">
+            <div>Հավաքածուներ</div>
+        </div>
+    </div>
+    <div class="popular">
+        <h2>Ամենաթրենդային ապրանքներ</h2>
+        <div class="products">
+            <div class="product">
+                <img src="product1.jpg" alt="Ծիածանափայլ թևնոց" onclick="openModal('product1.jpg')">
+                <div class="name">Ծիածանափայլ թևնոց</div>
+                <div class="price">10 000 AMD</div>
+                <div class="code">Կոդ: 001</div>
+            </div>
+            <div class="product">
+                <img src="product3.jpg" alt="էլէգանտ մատանի" onclick="openModal('product3.jpg')">
+                <div class="name">էլէգանտ մատանի</div>
+                <div class="price">5 000 AMD</div>
+                <div class="code">Կոդ: 003</div>
+            </div>
+           <div class="product">
+                <img src="product4.jpg" alt="Ձյունաճերմակ գեղեցկություն" onclick="openModal('product4.jpg')">
+                <div class="name">Ձյունաճերմակ գեղեցկություն</div>
+                <div class="price">15 000 AMD</div>
+                <div class="code">Կոդ: 004</div>
+            </div>
+          <div class="product">
+                <img src="product5.jpg" alt="Վարդագույն հրաշք" onclick="openModal('product5.jpg')">
+                <div class="name">Վարդագույն հրաշք</div>
+                <div class="price">20 000 AMD</div>
+                <div class="code">Կոդ: 005</div>
+            </div>
+        </div>
+    </div>
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="modal-close">&times;</span>
+        <img id="modalImg" src="" alt="">
+    </div>
+</body>
+</html>
